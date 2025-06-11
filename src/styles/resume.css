@@ -1,0 +1,163 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  background: radial-gradient(circle at 24% 69%, #323232 0%, #000 99%);
+  color: #b7babd;
+  overflow-x: hidden; /* Prevent any horizontal scroll */
+}
+
+/* Main Container: splits left image, right tabs/content */
+.resume {
+  display: flex;
+  align-items: flex-start; /* Align items at top */
+  gap: 10rem;
+  padding: calc(7rem + 50px) 5% 7rem 5%; /* Offset top = header height ~60px */
+}
+
+/* Left Column – Profile Image */
+.me {
+  flex: 0 0 auto;
+}
+.me img {
+  width: 450px;
+  max-width: 100%;
+  border-radius: 50%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Right Column – Tabs + Content */
+.right-panel {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  margin-right: 0; /* Removes extra space on right */
+}
+
+/* Tabs Row */
+.resume-info {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem; /* Slightly tighter */
+}
+.resume-info button {
+  background: none;
+  border: none;
+  color: #b7babd;
+  font-size: 1.1rem;
+  padding: 6px 8px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+.resume-info button:hover,
+.resume-info button.active {
+  color: #1a9fff;
+}
+.resume-info button.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0; right: 0;
+  height: 2px;
+  background: #1a9fff;
+}
+
+/* Content Area – Directly below tabs */
+.res-con {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  display: none;
+}
+.content.active {
+  display: block;
+}
+
+/* Section Text Styling */
+.skilltitle, .exptitle, .eductitle, .achititle {
+  color: #ac0d42;
+  font-size: 1.15rem;
+  margin-top: 1.25rem;
+}
+.skilltext, .exptext, .eductext, .achitext {
+  color: #b7babd;
+  margin-top: 0.4rem;
+  line-height: 1.5;
+}
+
+/* Responsive Design for Resume Section */
+@media (max-width: 1024px) {
+  .resume {
+    flex-direction: column;
+    gap: 4rem;
+    padding: calc(6rem + 40px) 8% 6rem 8%;
+    align-items: center;
+  }
+
+  .me img {
+    width: 300px;
+  }
+
+  .right-panel {
+    width: 100%;
+  }
+
+  .resume-info {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .resume-info button {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .resume {
+    padding: calc(5rem + 30px) 5% 5rem 5%;
+  }
+
+  .me img {
+    width: 250px;
+  }
+
+  .skilltitle, .exptitle, .eductitle, .achititle {
+    font-size: 1.05rem;
+  }
+
+  .skilltext, .exptext, .eductext, .achitext {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .me img {
+    width: 180px;
+  }
+
+  .resume-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .resume-info button {
+    font-size: 0.95rem;
+  }
+
+  .skilltitle, .exptitle, .eductitle, .achititle {
+    font-size: 1rem;
+  }
+
+  .skilltext, .exptext, .eductext, .achitext {
+    font-size: 0.9rem;
+  }
+}
