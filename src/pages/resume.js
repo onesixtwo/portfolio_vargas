@@ -57,7 +57,7 @@ export default function Resume() {
 
             <div id="education" className={`content${active === 'education' ? ' active' : ''}`}>
               <p className="eductitle">2022 - Present</p>
-              <p className="eductext">• College – Technological Institute of the Philippines</p>
+              <p className="eductext">•</p>
               <p className="eductitle">2020 - 2022</p>
               <p className="eductext">• Senior High – St. Mary’s Academy Pasay City</p>
               <p className="eductitle">2016 - 2020</p>
