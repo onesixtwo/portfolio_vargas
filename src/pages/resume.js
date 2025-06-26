@@ -129,20 +129,6 @@ export default function Resume() {
                   </p>
                 </div>
 
-                <div className="content-block">
-                  <h3 className="section-title">Database and Management</h3>
-                  <p className="experience-description">
-                    Designed and implemented MySQL databases. For a classroom project, we built a parking management
-                    system.
-                  </p>
-                </div>
-
-                <div className="content-block">
-                  <h3 className="section-title">Website Creation</h3>
-                  <p className="experience-description">
-                    Developed a website with UI/UX focus, matching the aesthetic of this portfolio layout.
-                  </p>
-                </div>
               </div>
 
               {/* Education */}
@@ -152,9 +138,9 @@ export default function Resume() {
                     <h3 className="section-title">Computer Engineering</h3>
                     <span className="education-badge">2022 - Present</span>
                   </div>
-                  <h4 className="university-name">University of Rizal System</h4>
+                  <h4 className="university-name">.</h4>
                   <p className="experience-description">
-                    Currently pursuing Bachelor's degree in Computer Engineering, 3rd Year.
+                    Currently pursuing Bachelor's degree in Computer Engineering, 4th Year.
                   </p>
                 </div>
 
@@ -184,7 +170,31 @@ export default function Resume() {
               </div>
 
               {/* Projects */}
+              
               <div id="projects-content" className={`tab-pane ${activeTab === "projects" ? "active" : ""}`}>
+                
+                <div className="content-block">
+                  <h3 className="section-title">Website Catalog</h3>
+                  <div className="project-tags">
+                    <span className="project-tag">React</span>
+                    <span className="project-tag">TailwindCSS</span>
+                    <span className="project-tag">Creative Web Apps</span>
+                  </div>
+                  <p className="experience-description">
+                    Created an interactive website that serves as a personal catalog of quirky and creative coding experiments, inspired by neal.fun. Each project showcases a different idea or concept brought to life through code, with an emphasis on playfulness and exploration.
+                  </p>
+                  <div className="project-links">
+                    <a href="https://vargasss.netlify.app/" className="project-link">
+                      Live Demo
+                    </a>
+                    <a href="https://github.com/onesixtwo" className="project-link">
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+
+
+
                 <div className="content-block">
                   <h3 className="section-title">Discord Bot Development</h3>
                   <div className="project-tags">
@@ -203,47 +213,8 @@ export default function Resume() {
                   </div>
                 </div>
 
-                <div className="content-block">
-                  <h3 className="section-title">Parking Management System</h3>
-                  <div className="project-tags">
-                    <span className="project-tag">MySQL</span>
-                    <span className="project-tag">Database Design</span>
-                    <span className="project-tag">System Architecture</span>
-                  </div>
-                  <p className="experience-description">
-                    Designed and implemented a comprehensive parking management system with database integration for a
-                    classroom project, featuring real-time space tracking and user management.
-                  </p>
-                  <div className="project-links">
-                    <a href="#" className="project-link">
-                      Demo
-                    </a>
-                    <a href="https://github.com/onesixtwo" className="project-link">
-                      GitHub
-                    </a>
-                  </div>
-                </div>
 
-                <div className="content-block">
-                  <h3 className="section-title">Portfolio Website</h3>
-                  <div className="project-tags">
-                    <span className="project-tag">React</span>
-                    <span className="project-tag">CSS3</span>
-                    <span className="project-tag">Responsive Design</span>
-                  </div>
-                  <p className="experience-description">
-                    Developed a modern, responsive portfolio website with focus on UI/UX design, featuring smooth
-                    animations and mobile-first approach.
-                  </p>
-                  <div className="project-links">
-                    <a href="/" className="project-link">
-                      Live Demo
-                    </a>
-                    <a href="https://github.com/onesixtwo" className="project-link">
-                      GitHub
-                    </a>
-                  </div>
-                </div>
+
               </div>
             </div>
           </div>
