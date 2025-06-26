@@ -1,80 +1,256 @@
-import React, { useState } from 'react';
-import Header from '../components/header';
-import '../styles/resume.css';
-import pic from '../images/pic.jpg';
+"use client"
+
+import { useState, useEffect } from "react"
+import Header from "../components/header"
+import Footer from "../components/footer"
+import "../styles/resume.css"
+import pic from "../images/pic.jpg"
 
 export default function Resume() {
-  const sections = ['skills', 'experience', 'education', 'achievements'];
-  const [active, setActive] = useState('skills');
+  const [activeTab, setActiveTab] = useState("skills")
+
+  useEffect(() => {
+    // Animate content blocks when tab changes
+    const sections = document.querySelectorAll(".content-block")
+    sections.forEach((section) => {
+      section.classList.remove("show")
+    })
+
+    setTimeout(() => {
+      const activeSections = document.querySelectorAll(`#${activeTab}-content .content-block`)
+      activeSections.forEach((section, index) => {
+        setTimeout(() => {
+          section.classList.add("show")
+        }, 100 * index)
+      })
+    }, 50)
+  }, [activeTab])
+
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName)
+  }
 
   return (
     <>
       <Header />
-      <section className="resume">
-        <div className="me">
-          <img src={pic} alt="John Kenneth Vargas" />
-        </div>
+      <div className="container">
+        <div className="resume-wrapper">
+          {/* Left Side - Photo */}
+          <div className="photo-section">
+            <div className="photo-container">
+              <img src={pic || "/placeholder.svg"} alt="John Kenneth Vargas" className="profile-photo" />
+            </div>
+          </div>
 
-        <div className="right-panel">
-          <nav className="resume-info">
-            {sections.map((sec) => (
+          {/* Right Side - Resume Content */}
+          <div className="content-section">
+            {/* Tabs */}
+            <div className="tabs">
               <button
-                key={sec}
-                className={active === sec ? 'active' : ''}
-                onClick={() => setActive(sec)}
+                className={`tab-btn ${activeTab === "skills" ? "tab-active" : ""}`}
+                onClick={() => handleTabClick("skills")}
               >
-                {sec.charAt(0).toUpperCase() + sec.slice(1)}
+                Skills
               </button>
-            ))}
-          </nav>
-
-          <div className="res-con">
-            <div id="skills" className={`content${active === 'skills' ? ' active' : ''}`}>
-              <p className="skilltitle">Programming Languages</p>
-              <p className="skilltext">• Python Programming<br />• C++ Programming</p>
-              <p className="skilltitle">Bot Development</p>
-              <p className="skilltext">• Creating Discord Bot</p>
-              <p className="skilltitle">Database Management</p>
-              <p className="skilltext">• MySQL Database</p>
-              <p className="skilltitle">Web and UI Design</p>
-              <p className="skilltext">• Web Design<br />• UI Design</p>
+              <button
+                className={`tab-btn ${activeTab === "experience" ? "tab-active" : ""}`}
+                onClick={() => handleTabClick("experience")}
+              >
+                Experience
+              </button>
+              <button
+                className={`tab-btn ${activeTab === "education" ? "tab-active" : ""}`}
+                onClick={() => handleTabClick("education")}
+              >
+                Education
+              </button>
+              <button
+                className={`tab-btn ${activeTab === "projects" ? "tab-active" : ""}`}
+                onClick={() => handleTabClick("projects")}
+              >
+                Projects
+              </button>
             </div>
 
-            <div id="experience" className={`content${active === 'experience' ? ' active' : ''}`}>
-              <p className="exptitle">Discord Bot Development</p>
-              <p className="exptext">
-                • I created and maintained a Discord bot for my server. Its main functionalities are playing music and managing roles automatically.
-              </p>
-              <p className="exptitle">Database and Management</p>
-              <p className="exptext">
-                • Designed and implemented MySQL databases. For a classroom project, we built a parking management system.
-              </p>
-              <p className="exptitle">Website Creation</p>
-              <p className="exptext">
-                • Developed a website with UI/UX focus, matching the aesthetic of this portfolio layout.
-              </p>
-            </div>
+            {/* Content */}
+            <div className="tab-content">
+              {/* Skills */}
+              <div id="skills-content" className={`tab-pane ${activeTab === "skills" ? "active" : ""}`}>
+                <div className="content-block show">
+                  <h3 className="section-title">Programming Languages</h3>
+                  <ul className="skill-list">
+                    <li>
+                      <span className="skill-item">Python Programming</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">C++ Programming</span>
+                    </li>
+                  </ul>
+                </div>
 
-            <div id="education" className={`content${active === 'education' ? ' active' : ''}`}>
-              <p className="eductitle">2022 - Present</p>
-              <p className="eductext">•</p>
-              <p className="eductitle">2020 - 2022</p>
-              <p className="eductext">• Senior High – St. Mary’s Academy Pasay City</p>
-              <p className="eductitle">2016 - 2020</p>
-              <p className="eductext">• Junior High – St. Mary’s Academy Pasay City</p>
-              <p className="eductitle">2010 - 2016</p>
-              <p className="eductext">• Elementary – St. Mary’s Academy Pasay City</p>
-            </div>
+                <div className="content-block">
+                  <h3 className="section-title">Bot Development</h3>
+                  <ul className="skill-list">
+                    <li>
+                      <span className="skill-item">Creating Discord Bot</span>
+                    </li>
+                  </ul>
+                </div>
 
-            <div id="achievements" className={`content${active === 'achievements' ? ' active' : ''}`}>
-              <p className="achititle">Academic</p>
-              <p className="achitext">
-                • 1st Year Dean’s Lister<br />• Cisco Certified Entry Networking Technician
-              </p>
+                <div className="content-block">
+                  <h3 className="section-title">Database Management</h3>
+                  <ul className="skill-list">
+                    <li>
+                      <span className="skill-item">MySQL Database</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="content-block">
+                  <h3 className="section-title">Web and UI Design</h3>
+                  <ul className="skill-list">
+                    <li>
+                      <span className="skill-item">Web Design</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">UI Design</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Experience */}
+              <div id="experience-content" className={`tab-pane ${activeTab === "experience" ? "active" : ""}`}>
+                <div className="content-block">
+                  <h3 className="section-title">Discord Bot Development</h3>
+                  <p className="experience-description">
+                    I created and maintained a Discord bot for my server. Its main functionalities are playing music and
+                    managing roles automatically.
+                  </p>
+                </div>
+
+                <div className="content-block">
+                  <h3 className="section-title">Database and Management</h3>
+                  <p className="experience-description">
+                    Designed and implemented MySQL databases. For a classroom project, we built a parking management
+                    system.
+                  </p>
+                </div>
+
+                <div className="content-block">
+                  <h3 className="section-title">Website Creation</h3>
+                  <p className="experience-description">
+                    Developed a website with UI/UX focus, matching the aesthetic of this portfolio layout.
+                  </p>
+                </div>
+              </div>
+
+              {/* Education */}
+              <div id="education-content" className={`tab-pane ${activeTab === "education" ? "active" : ""}`}>
+                <div className="content-block">
+                  <div className="experience-header">
+                    <h3 className="section-title">Computer Engineering</h3>
+                    <span className="education-badge">2022 - Present</span>
+                  </div>
+                  <h4 className="university-name">University of Rizal System</h4>
+                  <p className="experience-description">
+                    Currently pursuing Bachelor's degree in Computer Engineering, 3rd Year.
+                  </p>
+                </div>
+
+                <div className="content-block">
+                  <div className="experience-header">
+                    <h3 className="section-title">Senior High School</h3>
+                    <span className="education-badge">2020 - 2022</span>
+                  </div>
+                  <h4 className="university-name">St. Mary's Academy Pasay City</h4>
+                </div>
+
+                <div className="content-block">
+                  <div className="experience-header">
+                    <h3 className="section-title">Junior High School</h3>
+                    <span className="education-badge">2016 - 2020</span>
+                  </div>
+                  <h4 className="university-name">St. Mary's Academy Pasay City</h4>
+                </div>
+
+                <div className="content-block">
+                  <div className="experience-header">
+                    <h3 className="section-title">Elementary</h3>
+                    <span className="education-badge">2010 - 2016</span>
+                  </div>
+                  <h4 className="university-name">St. Mary's Academy Pasay City</h4>
+                </div>
+              </div>
+
+              {/* Projects */}
+              <div id="projects-content" className={`tab-pane ${activeTab === "projects" ? "active" : ""}`}>
+                <div className="content-block">
+                  <h3 className="section-title">Discord Bot Development</h3>
+                  <div className="project-tags">
+                    <span className="project-tag">Python</span>
+                    <span className="project-tag">Discord.py</span>
+                    <span className="project-tag">MySQL</span>
+                  </div>
+                  <p className="experience-description">
+                    Built a comprehensive Discord bot with music playback capabilities and automated role management
+                    system for server administration.
+                  </p>
+                  <div className="project-links">
+                    <a href="https://github.com/onesixtwo" className="project-link">
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+
+                <div className="content-block">
+                  <h3 className="section-title">Parking Management System</h3>
+                  <div className="project-tags">
+                    <span className="project-tag">MySQL</span>
+                    <span className="project-tag">Database Design</span>
+                    <span className="project-tag">System Architecture</span>
+                  </div>
+                  <p className="experience-description">
+                    Designed and implemented a comprehensive parking management system with database integration for a
+                    classroom project, featuring real-time space tracking and user management.
+                  </p>
+                  <div className="project-links">
+                    <a href="#" className="project-link">
+                      Demo
+                    </a>
+                    <a href="https://github.com/onesixtwo" className="project-link">
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+
+                <div className="content-block">
+                  <h3 className="section-title">Portfolio Website</h3>
+                  <div className="project-tags">
+                    <span className="project-tag">React</span>
+                    <span className="project-tag">CSS3</span>
+                    <span className="project-tag">Responsive Design</span>
+                  </div>
+                  <p className="experience-description">
+                    Developed a modern, responsive portfolio website with focus on UI/UX design, featuring smooth
+                    animations and mobile-first approach.
+                  </p>
+                  <div className="project-links">
+                    <a href="/" className="project-link">
+                      Live Demo
+                    </a>
+                    <a href="https://github.com/onesixtwo" className="project-link">
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+
+      <Footer />
     </>
-  );
+  )
 }

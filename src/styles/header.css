@@ -1,0 +1,158 @@
+/* Header / Navigation */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  background: transparent;
+}
+
+.logo {
+  margin-left: 70px;
+  text-decoration: none;
+  position: relative;
+  display: block;
+}
+
+.logo-image {
+  height: 50px; /* Adjusted height for header */
+  width: auto; /* Maintains aspect ratio */
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo-image:hover {
+  transform: scale(1.05);
+}
+
+.logo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #423d3a; /* Match the body background color */
+  animation: showRight 1s ease forwards;
+  animation-delay: 0.4s;
+  z-index: 1;
+}
+
+.logo-image {
+  position: relative;
+  z-index: 0;
+}
+
+.navbar a {
+  font-size: 18px;
+  color: #dcdedf;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 60px;
+  transition: color 0.1s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: #1a9fff;
+}
+
+/* Keyframes */
+@keyframes showRight {
+  to {
+    width: 0;
+  }
+}
+
+/* Responsive Design for Header */
+@media (max-width: 1024px) {
+  .logo {
+    margin-left: 40px;
+  }
+
+  .logo-image {
+    height: 45px;
+  }
+
+  .navbar a {
+    margin-left: 40px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 20px; /* Add gap between elements */
+  }
+
+  .logo {
+    margin-left: 0;
+  }
+
+  .logo-image {
+    height: 40px;
+  }
+
+  .navbar {
+    display: flex;
+    gap: 20px; /* Space between Home and Resume */
+    align-items: center;
+  }
+
+  .navbar a {
+    margin-left: 0;
+    font-size: 16px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 15px;
+    gap: 15px; /* Smaller gap on very small screens */
+  }
+
+  .logo-image {
+    height: 35px;
+  }
+
+  .navbar {
+    gap: 15px;
+  }
+
+  .navbar a {
+    font-size: 14px;
+  }
+}
+
+/* Page-specific background matching */
+body.home-page .logo::before {
+  background: #423d3a; /* Home page background */
+}
+
+body.resume-page .logo::before {
+  background: radial-gradient(circle at 24% 69%, #323232 0%, #000 99%);
+  background-size: 100% 100%;
+}
+
+/* Mobile header opacity - restore the opaque effect */
+@media (max-width: 768px) {
+  body.resume-page .header {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  body.home-page .header {
+    background: rgba(66, 61, 58, 0.3) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}

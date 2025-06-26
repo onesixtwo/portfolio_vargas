@@ -3,161 +3,316 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
+
 body {
   background: radial-gradient(circle at 24% 69%, #323232 0%, #000 99%);
   color: #b7babd;
-  overflow-x: hidden; /* Prevent any horizontal scroll */
+  overflow-x: hidden;
+  line-height: 1.6;
 }
 
-/* Main Container: splits left image, right tabs/content */
-.resume {
-  display: flex;
-  align-items: flex-start; /* Align items at top */
-  gap: 10rem;
-  padding: calc(7rem + 50px) 5% 7rem 5%; /* Offset top = header height ~60px */
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  margin-top: 80px; /* Account for fixed header */
 }
 
-/* Left Column – Profile Image */
-.me {
-  flex: 0 0 auto;
-}
-.me img {
-  width: 450px;
-  max-width: 100%;
-  border-radius: 50%;
-  height: auto;
-  object-fit: cover;
-}
-
-/* Right Column – Tabs + Content */
-.right-panel {
-  flex: 1 1 auto;
+/* Layout */
+.resume-wrapper {
   display: flex;
   flex-direction: column;
-  margin-right: 0; /* Removes extra space on right */
+  gap: 2rem;
 }
 
-/* Tabs Row */
-.resume-info {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem; /* Slightly tighter */
+@media (min-width: 992px) {
+  .resume-wrapper {
+    flex-direction: row;
+  }
+
+  .photo-section {
+    width: 33%;
+  }
+
+  .content-section {
+    width: 67%;
+  }
 }
-.resume-info button {
+
+/* Photo Section */
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-container {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 4px solid #444;
+}
+
+.profile-photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
+
+/* Content Section */
+.content-section {
+  background: rgba(50, 50, 50, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #555;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tab-btn {
+  padding: 0.5rem 1rem;
   background: none;
   border: none;
   color: #b7babd;
-  font-size: 1.1rem;
-  padding: 6px 8px;
   cursor: pointer;
-  position: relative;
+  font-size: 1rem;
   transition: color 0.2s;
-}
-.resume-info button:hover,
-.resume-info button.active {
-  color: #1a9fff;
-}
-.resume-info button.active::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0; right: 0;
-  height: 2px;
-  background: #1a9fff;
+  position: relative;
 }
 
-/* Content Area – Directly below tabs */
-.res-con {
-  display: flex;
-  flex-direction: column;
+.tab-btn:focus {
+  outline: none;
 }
-.content {
+
+.tab-btn:hover,
+.tab-active {
+  color: #ffffff;
+}
+
+.tab-active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffffff;
+}
+
+/* Tab Content */
+.tab-pane {
   display: none;
 }
-.content.active {
+
+.tab-pane.active {
   display: block;
 }
 
-/* Section Text Styling */
-.skilltitle, .exptitle, .eductitle, .achititle {
-  color: #ac0d42;
-  font-size: 1.15rem;
-  margin-top: 1.25rem;
-}
-.skilltext, .exptext, .eductext, .achitext {
-  color: #b7babd;
-  margin-top: 0.4rem;
-  line-height: 1.5;
-}
-
-/* Responsive Design for Resume Section */
-@media (max-width: 1024px) {
-  .resume {
-    flex-direction: column;
-    gap: 4rem;
-    padding: calc(6rem + 40px) 8% 6rem 8%;
-    align-items: center;
-  }
-
-  .me img {
-    width: 300px;
-  }
-
-  .right-panel {
-    width: 100%;
-  }
-
-  .resume-info {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .resume-info button {
-    font-size: 1rem;
-    padding: 5px 10px;
-  }
+/* Content Sections */
+.content-block {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  background: rgba(60, 60, 60, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
+.content-block.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Titles */
+.section-title {
+  color: #ab0d42;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Lists */
+.skill-list {
+  list-style-type: none;
+}
+
+.skill-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.skill-list li::before {
+  content: "•";
+  margin-right: 0.5rem;
+  color: #1a9fff;
+}
+
+.skill-item {
+  color: #dcdedf;
+}
+
+/* Experience */
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.education-badge {
+  background-color: #047857;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.university-name {
+  color: #d1d5db;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.experience-description {
+  color: #d1d5db;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .resume {
-    padding: calc(5rem + 30px) 5% 5rem 5%;
+  .container {
+    padding: 1rem 0.5rem;
+    margin-top: 140px; /* More space for mobile header */
   }
 
-  .me img {
-    width: 250px;
+  .photo-container {
+    max-width: 150px; /* 70% smaller than original 400px */
   }
 
-  .skilltitle, .exptitle, .eductitle, .achititle {
-    font-size: 1.05rem;
+  .content-section {
+    padding: 1rem;
   }
 
-  .skilltext, .exptext, .eductext, .achitext {
-    font-size: 0.95rem;
+  .tabs {
+    justify-content: center;
+  }
+
+  .tab-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .education-badge {
+    align-self: flex-start;
   }
 }
 
 @media (max-width: 480px) {
-  .me img {
-    width: 180px;
+  .photo-container {
+    max-width: 150px; /* Even smaller for very small screens */
   }
 
-  .resume-info {
+  .tabs {
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
   }
 
-  .resume-info button {
-    font-size: 0.95rem;
+  .tab-btn {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
   }
 
-  .skilltitle, .exptitle, .eductitle, .achititle {
-    font-size: 1rem;
+  .content-block {
+    padding: 1rem;
+  }
+}
+
+/* Projects */
+.project-tags {
+  margin-bottom: 0.75rem;
+}
+
+.project-tag {
+  background-color: #7e22ce;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  display: inline-block;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  background-color: #4b5563;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  display: inline-block;
+}
+
+.project-link:hover {
+  background-color: #6b7280;
+}
+
+/* Responsive adjustments for project elements */
+@media (max-width: 768px) {
+  .project-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
   }
 
-  .skilltext, .exptext, .eductext, .achitext {
-    font-size: 0.9rem;
+  .project-link {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
   }
+}
+
+
+/* Header opacity for resume page */
+.header {
+  background: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

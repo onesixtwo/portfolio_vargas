@@ -1,17 +1,21 @@
-// src/components/Header.js
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import '../styles/home.css'; // or a shared header.css
+import { NavLink } from "react-router-dom"
+import "../styles/header.css"
+import logoImage from "../images/homelogo.png" // You'll need to add your logo image here
 
 export default function Header() {
   return (
     <header className="header">
-      <NavLink to="/" className="logo">My Portfolio</NavLink>
+      <NavLink to="/" className="logo">
+        <img src={logoImage || "/placeholder.svg?height=50&width=156"} alt="Portfolio Logo" className="logo-image" />
+      </NavLink>
       <nav className="navbar">
-        <NavLink exact to="/" activeClassName="active">Home</NavLink>
-        <NavLink to="/resume" activeClassName="active">Resume</NavLink>
-        <NavLink to="/contact" activeClassName="active">Contact</NavLink>
+        <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+          About Me
+        </NavLink>
+        <NavLink to="/resume" className={({ isActive }) => (isActive ? "active" : "")}>
+          Resume
+        </NavLink>
       </nav>
     </header>
-  );
+  )
 }
