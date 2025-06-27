@@ -184,7 +184,7 @@ export default function Resume() {
                     Created an interactive website that serves as a personal catalog of quirky and creative coding experiments, inspired by neal.fun. Each project showcases a different idea or concept brought to life through code, with an emphasis on playfulness and exploration.
                   </p>
                   <div className="project-links">
-                    <a href="https://vargasss.netlify.app/" className="project-link">
+                    <a href="https://vargass.netlify.app/" className="project-link">
                       Live Demo
                     </a>
                     <a href="https://github.com/onesixtwo" className="project-link">
