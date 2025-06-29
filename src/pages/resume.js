@@ -149,7 +149,6 @@ export default function Resume() {
     const margin = 72 // 1 inch in points
     const contentWidth = 612 - margin * 2 // 6.5 inches
     const pageHeight = 792
-    const contentHeight = pageHeight - margin * 2
     let yPosition = margin
 
     const checkPageBreak = (requiredSpace) => {
