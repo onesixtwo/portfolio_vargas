@@ -114,6 +114,25 @@ export default function Resume() {
     return projectsData
   }
 
+  const extractCertificatesData = () => {
+    const certificatesData = []
+    const certificatesContent = document.getElementById("certificates-content")
+    if (certificatesContent) {
+      const contentBlocks = certificatesContent.querySelectorAll(".content-block")
+      contentBlocks.forEach((block) => {
+        const title = block.querySelector(".section-title")?.textContent || ""
+        const issuer = block.querySelector(".certificate-issuer")?.textContent || ""
+        const date = block.querySelector(".certificate-date")?.textContent || ""
+        const description = block.querySelector(".experience-description")?.textContent || ""
+        const link = block.querySelector(".certificate-link")?.href || ""
+        if (title) {
+          certificatesData.push({ title, issuer, date, description, link })
+        }
+      })
+    }
+    return certificatesData
+  }
+
   const splitTextToLines = (doc, text, maxWidth) => {
     const words = text.split(" ")
     const lines = []
@@ -326,6 +345,58 @@ export default function Resume() {
       })
     }
 
+    // Certificates Section
+    const certificatesData = extractCertificatesData()
+    if (certificatesData.length > 0) {
+      checkPageBreak(50)
+      doc.setFontSize(14)
+      doc.setFont(undefined, "bold")
+      doc.text("CERTIFICATES", margin, yPosition)
+      yPosition += 20
+
+      certificatesData.forEach((certificate) => {
+        checkPageBreak(50)
+        doc.setFontSize(11)
+        doc.setFont(undefined, "bold")
+        doc.text(certificate.title, margin, yPosition)
+        yPosition += 15
+
+        if (certificate.issuer) {
+          doc.setFontSize(10)
+          doc.setFont(undefined, "italic")
+          doc.text("Issued by: " + certificate.issuer, margin, yPosition)
+          yPosition += 12
+        }
+
+        if (certificate.date) {
+          doc.setFontSize(9)
+          doc.setFont(undefined, "normal")
+          doc.text("Date: " + certificate.date, margin, yPosition)
+          yPosition += 12
+        }
+
+        if (certificate.description) {
+          doc.setFontSize(10)
+          doc.setFont(undefined, "normal")
+          const lines = splitTextToLines(doc, certificate.description, contentWidth)
+          lines.forEach((line) => {
+            checkPageBreak(12)
+            doc.text(line, margin, yPosition)
+            yPosition += 12
+          })
+        }
+
+        if (certificate.link) {
+          checkPageBreak(12)
+          doc.setFontSize(9)
+          doc.setFont(undefined, "normal")
+          doc.text("Certificate Link: " + certificate.link, margin, yPosition)
+          yPosition += 12
+        }
+        yPosition += 15
+      })
+    }
+
     // Save the PDF
     doc.save("John_Kenneth_Vargas_Resume.pdf")
   }
@@ -375,6 +446,12 @@ export default function Resume() {
                 onClick={() => handleTabClick("projects")}
               >
                 Projects
+              </button>
+              <button
+                className={`tab-btn ${activeTab === "certificates" ? "tab-active" : ""}`}
+                onClick={() => handleTabClick("certificates")}
+              >
+                Certificates
               </button>
             </div>
 
@@ -523,6 +600,83 @@ export default function Resume() {
                     </a>
                   </div>
                 </div>
+              </div>
+
+              {/* Certificates */}
+              <div id="certificates-content" className={`tab-pane ${activeTab === "certificates" ? "active" : ""}`}>
+                {/* 1 */}
+                <div className="content-block">
+                  <h3 className="section-title">*cert title here*</h3>
+                  <div className="certificate-header">
+                    <span className="certificate-issuer">*where u got cert from*</span>
+                    <span className="certificate-date">*yr issued*</span>
+                  </div>
+                  <p className="experience-description">
+                    *some bullshit description here*
+                  </p>
+                  <div className="certificate-actions">
+                    <a
+                      href="404"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="certificate-link"
+                    >
+                      <i className="ri-external-link-line"></i>
+                      View Certificate
+                    </a>
+                  </div>
+                </div>
+                {/* 2 *
+                <div className="content-block">
+                  <h3 className="section-title">Responsive Web Design</h3>
+                  <div className="certificate-header">
+                    <span className="certificate-issuer">FreeCodeCamp</span>
+                    <span className="certificate-date">2000</span>
+                  </div>
+                  <p className="experience-description">
+                    Mastered HTML5, CSS3, responsive design principles, CSS Grid, Flexbox, and accessibility best
+                    practices for modern web development.
+                  </p>
+                  <div className="certificate-actions">
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="certificate-link"
+                    >
+                      <i className="ri-external-link-line"></i>
+                      View Certificate
+                    </a>
+                  </div>
+                </div>
+                /}
+                {/* 3 
+                <div className="content-block">
+                  <h3 className="section-title">Python Programming</h3>
+                  <div className="certificate-header">
+                    <span className="certificate-issuer">Coursera</span>
+                    <span className="certificate-date">2000</span>
+                  </div>
+                  <p className="experience-description">
+                    Comprehensive Python programming course covering syntax, data structures, object-oriented
+                    programming, and practical application development.
+                  </p>
+                  <div className="certificate-actions">
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="certificate-link"
+                    >
+                      <i className="ri-external-link-line"></i>
+                      View Certificate
+                    </a>
+                  </div>
+                </div>
+                */}
+                {/* 4 */}
+
+
               </div>
             </div>
           </div>
