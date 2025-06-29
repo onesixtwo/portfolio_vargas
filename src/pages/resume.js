@@ -77,43 +77,67 @@ export default function Resume() {
               {/* Skills */}
               <div id="skills-content" className={`tab-pane ${activeTab === "skills" ? "active" : ""}`}>
                 <div className="content-block show">
-                  <h3 className="section-title">Programming Languages</h3>
+                  <h3 className="section-title">Web & Software Development</h3>
                   <ul className="skill-list">
                     <li>
-                      <span className="skill-item">Python Programming</span>
+                      <span className="skill-item">JavaScript, React, HTML5, CSS3, Node.js</span>
                     </li>
                     <li>
-                      <span className="skill-item">C++ Programming</span>
+                      <span className="skill-item">Responsive Design, UI/UX Design</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">Git, Agile Development</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">Python, C Programming</span>
                     </li>
                   </ul>
                 </div>
 
                 <div className="content-block">
-                  <h3 className="section-title">Bot Development</h3>
+                  <h3 className="section-title">Problem-Solving & Collaboration</h3>
                   <ul className="skill-list">
                     <li>
-                      <span className="skill-item">Creating Discord Bot</span>
+                      <span className="skill-item">Adaptability, Time Management</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">Creative Problem Solving</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">Critical Thinking, Team Collaboration</span>
                     </li>
                   </ul>
                 </div>
 
                 <div className="content-block">
-                  <h3 className="section-title">Database Management</h3>
+                  <h3 className="section-title">Electronics & Embedded Systems</h3>
                   <ul className="skill-list">
                     <li>
-                      <span className="skill-item">MySQL Database</span>
+                      <span className="skill-item">Microcontrollers, Breadboarding</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">Digital & Logic Circuit Design, Schematic Design</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">Embedded Systems Programming</span>
                     </li>
                   </ul>
                 </div>
 
                 <div className="content-block">
-                  <h3 className="section-title">Web and UI Design</h3>
+                  <h3 className="section-title">Computer Science Fundamentals</h3>
                   <ul className="skill-list">
                     <li>
-                      <span className="skill-item">Web Design</span>
+                      <span className="skill-item">Computer Networks</span>
                     </li>
                     <li>
-                      <span className="skill-item">UI Design</span>
+                      <span className="skill-item">Data Structures</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">Operating Systems</span>
+                    </li>
+                    <li>
+                      <span className="skill-item">System Architecture</span>
                     </li>
                   </ul>
                 </div>
@@ -146,6 +170,15 @@ export default function Resume() {
 
                 <div className="content-block">
                   <div className="experience-header">
+                    <h3 className="section-title">Elementary - Senior High School</h3>
+                    <span className="education-badge">2010 - 2022</span>
+                  </div>
+                  <h4 className="university-name">St. Mary's Academy Pasay City</h4>
+                </div>
+                
+                {/* Education 
+                <div className="content-block">
+                  <div className="experience-header">
                     <h3 className="section-title">Senior High School</h3>
                     <span className="education-badge">2020 - 2022</span>
                   </div>
@@ -167,6 +200,8 @@ export default function Resume() {
                   </div>
                   <h4 className="university-name">St. Mary's Academy Pasay City</h4>
                 </div>
+                */}
+
               </div>
 
               {/* Projects */}
