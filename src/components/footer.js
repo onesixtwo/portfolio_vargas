@@ -12,7 +12,7 @@ export default function Footer() {
         <div className="contact-info">
           <div className="contact-item">
             <i className="ri-mail-fill contact-icon"></i>
-            <span>vargaskenneth656@gmail.com</span>
+            <span>vargaskenneth463@gmail.com</span>
           </div>
           <div className="contact-item">
             <i className="ri-phone-fill contact-icon"></i>

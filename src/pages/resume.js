@@ -6,6 +6,9 @@ import Footer from "../components/footer"
 import "../styles/resume.css"
 import pic from "../images/pic.jpg"
 import jsPDF from "jspdf"
+import cert2 from "../certificates/CISCO2_certificate.pdf"
+import cert1 from "../certificates/CISCO1_certificate.pdf"
+
 
 export default function Resume() {
   const [activeTab, setActiveTab] = useState("skills")
@@ -561,6 +564,8 @@ export default function Resume() {
 
               {/* Projects */}
               <div id="projects-content" className={`tab-pane ${activeTab === "projects" ? "active" : ""}`}>
+
+                {/* 1 */}
                 <div className="content-block">
                   <h3 className="section-title">Website Catalog</h3>
                   <div className="project-tags">
@@ -574,15 +579,31 @@ export default function Resume() {
                     life through code, with an emphasis on playfulness and exploration.
                   </p>
                   <div className="project-links">
-                    <a href="https://vargass.netlify.app/" className="project-link">
-                      Live Demo
-                    </a>
-                    <a href="https://github.com/onesixtwo" className="project-link">
-                      GitHub
-                    </a>
+                    <a href="https://randomshi.netlify.app/" className="project-link" target="_blank" rel="noopener noreferrer"> Live Demo </a>
+                    <a href="https://github.com/onesixtwo" className="project-link" target="_blank" rel="noopener noreferrer"> GitHub </a>
                   </div>
                 </div>
 
+                {/* 2 */}
+                <div className="content-block">
+                  <h3 className="section-title">Parking Management System</h3>
+                  <div className="project-tags">
+                    <span className="project-tag">React</span>
+                    <span className="project-tag">Django REST Framework</span>
+                  </div>
+                  <p className="experience-description">
+                    Developed a full-stack parking management system with role-based access for Admin, Clerk, and Customer users.
+                    Features include real-time slot occupancy, automated fee calculation, reservation handling, and responsive UI. 
+                    Built with React on the frontend and Django REST Framework on the backend.
+                  </p>
+                  <div className="project-links">
+                    <a href="https://moneygersparking.netlify.app" className="project-link" target="_blank" rel="noopener noreferrer"> Live Demo </a>
+                    <a href="https://github.com/onesixtwo" className="project-link" target="_blank" rel="noopener noreferrer"> Github </a>
+                  </div>
+                </div>
+
+
+                {/* 3 */}
                 <div className="content-block">
                   <h3 className="section-title">Discord Bot Development</h3>
                   <div className="project-tags">
@@ -595,28 +616,28 @@ export default function Resume() {
                     system for server administration.
                   </p>
                   <div className="project-links">
-                    <a href="https://github.com/onesixtwo" className="project-link">
-                      GitHub
-                    </a>
+                    <a href="https://github.com/onesixtwo" className="project-link" target="_blank" rel="noopener noreferrer"> GitHub </a>
                   </div>
                 </div>
               </div>
 
               {/* Certificates */}
               <div id="certificates-content" className={`tab-pane ${activeTab === "certificates" ? "active" : ""}`}>
+
                 {/* 1 */}
                 <div className="content-block">
-                  <h3 className="section-title">*cert title here*</h3>
+                  <h3 className="section-title">CCNAv7: Switching, Routing, and Wireless Essentials</h3>
                   <div className="certificate-header">
-                    <span className="certificate-issuer">*where u got cert from*</span>
-                    <span className="certificate-date">*yr issued*</span>
+                    <span className="certificate-issuer">Cisco Networking Academy</span>
+                    <span className="certificate-date">2024</span>
                   </div>
                   <p className="experience-description">
-                    *some bullshit description here*
+                    Core switching and routing protocols (RIP, OSPF), VLAN setup, 
+                    wireless networking, and troubleshooting small to medium networks.
                   </p>
                   <div className="certificate-actions">
                     <a
-                      href="404"
+                      href={cert2}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="certificate-link"
@@ -626,20 +647,21 @@ export default function Resume() {
                     </a>
                   </div>
                 </div>
-                {/* 2 *
+
+                {/* 2 */}
                 <div className="content-block">
-                  <h3 className="section-title">Responsive Web Design</h3>
+                  <h3 className="section-title">CCNAv7: Introduction to Networks</h3>
                   <div className="certificate-header">
-                    <span className="certificate-issuer">FreeCodeCamp</span>
-                    <span className="certificate-date">2000</span>
+                    <span className="certificate-issuer">Cisco Networking Academy</span>
+                    <span className="certificate-date">2024</span>
                   </div>
                   <p className="experience-description">
-                    Mastered HTML5, CSS3, responsive design principles, CSS Grid, Flexbox, and accessibility best
-                    practices for modern web development.
+                    Foundational knowledge in networking concepts including IP addressing, 
+                    Ethernet, TCP/IP, and basic network configuration using Cisco Packet Tracer.
                   </p>
                   <div className="certificate-actions">
                     <a
-                      href="#"
+                      href={cert1}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="certificate-link"
@@ -649,7 +671,7 @@ export default function Resume() {
                     </a>
                   </div>
                 </div>
-                /}
+               
                 {/* 3 
                 <div className="content-block">
                   <h3 className="section-title">Python Programming</h3>
